@@ -39,7 +39,6 @@ namespace Lab09LinqInManhattan.Tests
 
             // Assert: 147 neighborhoods selected
             Assert.Equal(147, numberOfHoods);
-
         }
     }
 }
