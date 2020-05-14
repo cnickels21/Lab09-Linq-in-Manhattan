@@ -63,5 +63,26 @@ namespace Lab09LinqInManhattan.Tests
             Assert.Equal(143, filterNoNames.Count());
 
         }
+
+        [Fact]
+        public void Filter_out_Duplicates()
+        {
+            // Arrange
+            RootObject result = Program.GetNeighborhoods();
+            int numberOfHoods =
+                Enumerable.Count<object>(result.features);
+
+
+            // Act
+            var filterNoNames =
+                (from feature
+                in result.features
+                where feature.properties.neighborhood != ""
+                select feature.properties.neighborhood).Distinct();
+
+            // Assert
+            Assert.Equal(39, filterNoNames.Count());
+
+        }
     }
 }
