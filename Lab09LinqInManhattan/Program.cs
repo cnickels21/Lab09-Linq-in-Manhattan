@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 
 namespace Lab09LinqInManhattan
 {
@@ -9,7 +9,7 @@ namespace Lab09LinqInManhattan
     {
         public static void Main(string[] args)
         {
-            
+
         }
 
         public static RootObject GetNeighborhoods()
@@ -17,12 +17,10 @@ namespace Lab09LinqInManhattan
             string filePath = "data.json";
             string neighborhoods = File.ReadAllText(filePath);
 
-            RootObject objectifiedNeighborhoods =
+            dynamic objectifiedNeighborhoods =
                 JsonConvert.DeserializeObject<RootObject>(neighborhoods);
 
             return objectifiedNeighborhoods;
         }
-
-
     }
 }

@@ -1,12 +1,13 @@
-using Xunit;
-using Lab09LinqInManhattan;
-using System;
 using System.Linq;
+using Xunit;
 
 namespace Lab09LinqInManhattan.Tests
 {
     public class Lab09LinqInManhattanTests
     {
+
+        
+
         [Fact]
         public void Json_data_retrieved_from_file()
         {
@@ -32,13 +33,35 @@ namespace Lab09LinqInManhattan.Tests
         public void Counting_all_the_neighborhoods()
         {
             // Arrange
-            var result = Program.GetNeighborhoods();
+            RootObject result = Program.GetNeighborhoods();
 
             // Act
-            int numberOfHoods = Enumerable.Count<object>(result.features);
+            int numberOfHoods = 
+                Enumerable.Count<object>(result.features);
 
             // Assert: 147 neighborhoods selected
             Assert.Equal(147, numberOfHoods);
+        }
+
+        [Fact]
+        public void Filter_all_features_without_name()
+        {
+            // Arrange
+            RootObject result = Program.GetNeighborhoods();
+            int numberOfHoods = 
+                Enumerable.Count<object>(result.features);
+
+
+            // Act
+            var filterNoNames =
+                from feature
+                in result.features
+                where feature.properties.neighborhood != ""
+                select feature.properties.neighborhood;
+
+            // Assert
+            Assert.Equal(143, filterNoNames.Count());
+
         }
     }
 }
