@@ -1,12 +1,26 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Lab09LinqInManhattan
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
+        }
+
+        public static object GetNeighborhoods()
+        {
+            string filePath = "data.json";
+            string neighborhoods = File.ReadAllText(filePath);
+
+            RootObject objectifiedNeighborhoods =
+                JsonConvert.DeserializeObject<RootObject>(neighborhoods);
+
+            return objectifiedNeighborhoods;
         }
     }
 }

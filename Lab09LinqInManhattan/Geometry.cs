@@ -2,12 +2,12 @@
 
 namespace Lab09LinqInManhattan
 {
-    class GeometryObjectifier
+    public class Geometry
     {
-        {
-            public string type { get; set; }
+        public string type { get; set; }
         public List<double> coordinates { get; set; }
     }
+
 
     public class Properties
     {
@@ -33,4 +33,4 @@ namespace Lab09LinqInManhattan
         public List<Feature> features { get; set; }
     }
 }
-}
+
