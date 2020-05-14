@@ -1,9 +1,8 @@
-using System;
 using Xunit;
 
 namespace Lab09LinqInManhattan.Tests
 {
-    public class UnitTest1
+    public class Lab09LinqInManhattanTests
     {
         [Fact]
         public void Test1()
