@@ -12,7 +12,7 @@ namespace Lab09LinqInManhattan
             
         }
 
-        public static object GetNeighborhoods()
+        public static RootObject GetNeighborhoods()
         {
             string filePath = "data.json";
             string neighborhoods = File.ReadAllText(filePath);
@@ -22,5 +22,7 @@ namespace Lab09LinqInManhattan
 
             return objectifiedNeighborhoods;
         }
+
+
     }
 }
