@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -84,5 +85,31 @@ namespace Lab09LinqInManhattan.Tests
             Assert.Equal(39, filterNoNames.Count());
 
         }
+ 
+
+        [Fact]
+        public void Filter_out_Duplicates_With_Where_Method()
+        {
+            // Arrange
+            RootObject result = Program.GetNeighborhoods();
+            int numberOfHoods =
+                Enumerable.Count<object>(result.features);
+
+
+            // Act
+            IEnumerable<object> theseHoods = result.features
+                .Where(numberOfHoods =>
+                !numberOfHoods.properties.neighborhood
+                .Equals(""))
+                .Select(feature => feature.properties.neighborhood)
+                .Distinct();
+
+           
+
+            // Assert
+            Assert.Equal(39, theseHoods.Count());
+
+        }
     }
+
 }
