@@ -1,12 +1,26 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Lab09LinqInManhattan
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+        }
+
+        public static RootObject GetNeighborhoods()
+        {
+            string filePath = "data.json";
+            string neighborhoods = File.ReadAllText(filePath);
+
+            dynamic objectifiedNeighborhoods =
+                JsonConvert.DeserializeObject<RootObject>(neighborhoods);
+
+            return objectifiedNeighborhoods;
         }
     }
 }
